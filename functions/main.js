@@ -2,9 +2,7 @@ function getSolutions(a, b, c) {
   let D = (Math.pow(b, 2) - 4 * a * c);
   
   if (D < 0) {
-    return {
-      'D': D
-    };  
+    return {D};  
   } else if (D == 0) {
     let x1 = -b / (2 * a);  
 
@@ -48,33 +46,39 @@ showSolutionsMessage(7, 20, -3);
 showSolutionsMessage(2, 4, 2);
 
 function getAverageScore(data) {
-    
-  function countAverageScore() {
-    let totalOfAllMarks = 0;
-    let sumOfAllMarks = 0;
+  let totalOfAllMarks = 0;
+  let sumOfAllMarks = 0;
 
-    for (let prop in data) {
-      let value = data[prop];
-      let sumOfMark = 0;
-      
-      for (let i = 0; i < value.length; i++) {
-        sumOfMark += value[i];
-        sumOfAllMarks += value[i];  
-        totalOfAllMarks += prop[i].length;
-      }
-      
-      sumOfMark = sumOfMark / value.length;  
-      console.log(`${prop}: ${sumOfMark}`);
-    }
-    
-    sumOfAllMarks = sumOfAllMarks / totalOfAllMarks;
-    console.log(`average: ${sumOfAllMarks}`); 
+  for (let prop in data) {
+    let value = data[prop];
+
+    for (let i = 0; i < value.length; i++) {
+      sumOfAllMarks += value[i];  
+      totalOfAllMarks += prop[i].length;
+    }  
   }
-  
-  return countAverageScore();
-    
+
+  sumOfAllMarks = sumOfAllMarks / totalOfAllMarks;
+  console.log(`average: ${sumOfAllMarks}`); 
+  countAverageScore(data);
 }
-  
+
+function countAverageScore(data) {
+    
+  for (let prop in data) {
+    let value = data[prop];
+    let sumOfMark = 0;
+      
+    for (let i = 0; i < value.length; i++) {
+      sumOfMark += value[i];
+    }
+      
+    sumOfMark = sumOfMark / value.length;  
+    console.log(`${prop}: ${sumOfMark}`);
+  }
+
+}
+
 getAverageScore({
   algebra: [2, 4, 5],
   geometry: [2, 4, 5],
@@ -85,27 +89,25 @@ getAverageScore({
   poetry: [5, 3, 4],
   chemistry: [2],
   music: [3, 3, 4]
-});
+}); 
 
 function getPersonData(secretData) {
-  secretData.firstName = secretData.aaa;
-  delete secretData.aaa;
+  
+  return {
+    firstName: rename(secretData),
+    lastName: rename(secretData)
+  };
+  
+}
 
-  secretData.lastName = secretData.bbb;
-  delete secretData.bbb;
-
-  function rename(secretData) {
-    for (let prop in secretData) {
-      if (secretData[prop] == 0) {
-        secretData[prop] = 'Родриго';
-      } else if (secretData[prop] == 1) {
-        secretData[prop] = 'Эмильо';
-      }
-    }  
+function rename(secretData) {
+  for (let prop in secretData) {
+    if (secretData[prop] == 0) {
+      return secretData[prop] = 'Родриго';
+    } else if (secretData[prop] == 1) {
+      return secretData[prop] = 'Эмильо';
+    }
   }
-  rename(secretData);
-
-  return secretData;
 }
 
 console.log(getPersonData({
