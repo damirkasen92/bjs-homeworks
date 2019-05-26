@@ -59,12 +59,13 @@ function getAverageScore(data) {
   }
 
   sumOfAllMarks = sumOfAllMarks / totalOfAllMarks;
-  console.log(`average: ${sumOfAllMarks}`); 
-  countAverageScore(data);
+  //console.log(`average: ${sumOfAllMarks}`); 
+  return sumOfAllMarks;
 }
 
 function countAverageScore(data) {
-    
+  let sumOfAllMarks = getAverageScore(data);  
+  
   for (let prop in data) {
     let value = data[prop];
     let sumOfMark = 0;
@@ -77,9 +78,10 @@ function countAverageScore(data) {
     console.log(`${prop}: ${sumOfMark}`);
   }
 
+  console.log(`average: ${sumOfAllMarks}`);
 }
 
-getAverageScore({
+countAverageScore({
   algebra: [2, 4, 5],
   geometry: [2, 4, 5],
   russian: [3, 5, 4, 5],
