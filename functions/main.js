@@ -45,38 +45,40 @@ showSolutionsMessage(1, 2, 3);
 showSolutionsMessage(7, 20, -3);
 showSolutionsMessage(2, 4, 2);
 
-function countAverageScore(...args) {
+function countAverageScore(args) {
   let sumOfAllMarks = 0;
-  
-  for (let prop in args) {
-    let value = args[prop];
     
-    for (let i = 0; i < value.length; i++) {
-      sumOfAllMarks += value[i];
+    for (let i = 0; i < args.length; i++) {
+      sumOfAllMarks += args[i];
     } 
 
-    sumOfAllMarks = sumOfAllMarks / value.length;
-  }
-
+  sumOfAllMarks = sumOfAllMarks / args.length;
+  
   return sumOfAllMarks; 
 }
 
 function getAverageScore(data) {  
   let newData = {};
-
+  newData.average = [];
+  
   for (let prop in data) {
     let value = data[prop];
     let result = countAverageScore(value);
+      
+      for (let i = 0; i < value.length; i++) {
+        newData.average.push(value[i]);
+      }
     
     newData[prop] = result;
   }  
-
+  
+  newData.average = countAverageScore(newData.average);
+  
   return newData; 
 }
 
 console.log(getAverageScore({
   algebra: [2, 4, 5],
-  average: [],
   geometry: [2, 4, 5],
   russian: [3, 5, 4, 5],
   french: [4, 4],
