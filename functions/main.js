@@ -74,7 +74,7 @@ function getAverageScore(data) {
   return newData; 
 }
 
-getAverageScore({
+console.log(getAverageScore({
   algebra: [2, 4, 5],
   average: [],
   geometry: [2, 4, 5],
@@ -85,7 +85,7 @@ getAverageScore({
   poetry: [5, 3, 4],
   chemistry: [2],
   music: [3, 3, 4],
-}); 
+})); 
 
 function getPersonData(secretData) {
   let firstName = secretData.aaa;
