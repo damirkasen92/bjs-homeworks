@@ -90,12 +90,12 @@ console.log(getAverageScore({
 })); 
 
 function getPersonData(secretData) {
-  let firstName = secretData.aaa;
-  let lastName = secretData.bbb;
+  /*let firstName = secretData.aaa;
+  let lastName = secretData.bbb;*/
   
   return {
-    firstName: rename(firstName),
-    lastName: rename(lastName)
+    firstName: rename(secretData.aaa),
+    lastName: rename(secretData.bbb)
   }
 }
 
