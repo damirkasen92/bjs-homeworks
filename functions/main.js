@@ -45,43 +45,34 @@ showSolutionsMessage(1, 2, 3);
 showSolutionsMessage(7, 20, -3);
 showSolutionsMessage(2, 4, 2);
 
-function getAverageScore(data) {
-  let totalOfAllMarks = 0;
+function countAverageScore(...args) {
   let sumOfAllMarks = 0;
-
-  for (let prop in data) {
-    let value = data[prop];
-
+  
+  for (let prop in args) {
+    let value = args[prop];
+    
     for (let i = 0; i < value.length; i++) {
-      sumOfAllMarks += value[i];  
-      totalOfAllMarks += prop[i].length;
-    }  
+      sumOfAllMarks += value[i];
+    } 
+
+    sumOfAllMarks = sumOfAllMarks / value.length;
   }
 
-  sumOfAllMarks = sumOfAllMarks / totalOfAllMarks;
-  //console.log(`average: ${sumOfAllMarks}`); 
-  return sumOfAllMarks;
+  return sumOfAllMarks; 
 }
 
-function countAverageScore(data) {
-  let sumOfAllMarks = getAverageScore(data);  
+function getAverageScore(data) {  
   
   for (let prop in data) {
     let value = data[prop];
-    let sumOfMark = 0;
-      
-    for (let i = 0; i < value.length; i++) {
-      sumOfMark += value[i];
-    }
-      
-    sumOfMark = sumOfMark / value.length;  
-    console.log(`${prop}: ${sumOfMark}`);
-  }
+    let result = countAverageScore(value);
 
-  console.log(`average: ${sumOfAllMarks}`);
+    console.log(`${prop}: ${result}`);  
+  }  
+  
 }
 
-countAverageScore({
+getAverageScore({
   algebra: [2, 4, 5],
   geometry: [2, 4, 5],
   russian: [3, 5, 4, 5],
@@ -90,26 +81,21 @@ countAverageScore({
   physics: [3, 2, 5],
   poetry: [5, 3, 4],
   chemistry: [2],
-  music: [3, 3, 4]
+  music: [3, 3, 4],
 }); 
 
 function getPersonData(secretData) {
+  let firstName = secretData.aaa;
+  let lastName = secretData.bbb;
   
   return {
-    firstName: rename(secretData),
-    lastName: rename(secretData)
-  };
-  
+    firstName: rename(firstName),
+    lastName: rename(lastName)
+  }
 }
 
-function rename(secretData) {
-  for (let prop in secretData) {
-    if (secretData[prop] == 0) {
-      return secretData[prop] = 'Родриго';
-    } else if (secretData[prop] == 1) {
-      return secretData[prop] = 'Эмильо';
-    }
-  }
+function rename(value) {
+  return (value == 0) ? 'Родриго' : 'Эмильо';
 }
 
 console.log(getPersonData({
