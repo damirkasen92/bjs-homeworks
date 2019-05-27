@@ -62,18 +62,21 @@ function countAverageScore(...args) {
 }
 
 function getAverageScore(data) {  
-  
+  let newData = {};
+
   for (let prop in data) {
     let value = data[prop];
     let result = countAverageScore(value);
-
-    console.log(`${prop}: ${result}`);  
+    
+    newData[prop] = result;
   }  
-  
+
+  return newData; 
 }
 
 getAverageScore({
   algebra: [2, 4, 5],
+  average: [],
   geometry: [2, 4, 5],
   russian: [3, 5, 4, 5],
   french: [4, 4],
