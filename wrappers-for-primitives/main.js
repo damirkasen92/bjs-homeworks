@@ -8,10 +8,16 @@ function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
   let monthPayment = returnPaymentToBank * (partOfRate + partOfRate / (((1 + partOfRate) ** period) - 1));
   let totalSum = monthPayment * period;
   
-  for (let i = 0; i <= arguments.length; i++) {
+  /*for (let i = 0; i <= arguments.length; i++) {
     if (typeof arguments[i] == 'string') {
       console.log(`Параметр: ${arguments[i]}, содержит неправильное значение: ${typeof arguments[i]}`);
     }
+  }*/
+
+  for (let prop in arguments) {
+    if (typeof arguments[prop] == 'string') {
+      console.log(`Параметр: ${prop}, содержит неправильное значение: ${arguments[prop]}`);
+    }  
   }
 
   if (isNaN(totalSum)) return false;
