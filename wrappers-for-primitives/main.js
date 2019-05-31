@@ -11,9 +11,10 @@ function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
   for (let i = 0; i <= arguments.length; i++) {
     if (typeof arguments[i] == 'string') {
       console.log(`Параметр: ${arguments[i]}, содержит неправильное значение: ${typeof arguments[i]}`);
-	    arguments[i] = +arguments[i];
     }
   }
+
+  if (isNaN(totalSum)) return false;
    
   /*console.log(returnPaymentToBank);
   console.log(monthPayment);
@@ -22,7 +23,7 @@ function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
   return totalSum.toFixed(2);
 }
 
-console.log(calcForHypothec('100', 'начальный взнос', 'общая стоимость', 'срок в месяцах'));
+console.log(calcForHypothec('процент*100', 'начальный взнос', 'общая стоимость', 'срок в месяцах'));
 
 function testInkognito(name) {
   if (name == null || undefined) {
