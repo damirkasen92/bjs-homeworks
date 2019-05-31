@@ -9,12 +9,12 @@ function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
   let totalSum = monthPayment * period;
   
   for (let i = 0; i <= arguments.length; i++) {
-    //arguments[i] = parseInt(arguments[i]); если параметр функции будет строкой, то попытайтесь преобразовать в число - как не пытась он не возвращает строку если там нет чисел
     if (typeof arguments[i] == 'string') {
       console.log(`Параметр: ${arguments[i]}, содержит неправильное значение: ${typeof arguments[i]}`);
+	  arguments[i] = +arguments[i];
     }
   }
-  
+   
   /*console.log(returnPaymentToBank);
   console.log(monthPayment);
   console.log(totalSum);*/
