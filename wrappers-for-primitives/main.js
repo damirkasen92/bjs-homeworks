@@ -11,7 +11,7 @@ function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
   for (let i = 0; i <= arguments.length; i++) {
     if (typeof arguments[i] == 'string') {
       console.log(`Параметр: ${arguments[i]}, содержит неправильное значение: ${typeof arguments[i]}`);
-	  arguments[i] = +arguments[i];
+	    arguments[i] = +arguments[i];
     }
   }
    
