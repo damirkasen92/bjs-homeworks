@@ -4,9 +4,11 @@ function soundOfAnimal(animal) {
   if (animal === undefined) {
     return null;
   }
+
+  return sound;
 }
 
-console.log(soundOfAnimal());
+console.log(soundOfAnimal('undefined'));
 
 function countAverageMark(marks) {
   let average = 0;
@@ -29,15 +31,16 @@ function countAge(year, month, day) {
   let now = new Date();
   let birthday = new Date(year, month - 1, day);
   let diff = now - birthday;
-  let age = diff / (1000*60*60*24*365.25);
+  let age = Math.floor(diff / (1000*60*60*24*365.25));
   
   if (age >= 18) { 
     console.log('Вы совершеннолетний');
+    return age;
   } else {
     console.log('Вам нет 18');
+    return false;
   }  
   
-  return Math.floor(age);
 }
 
 console.log(countAge(1992, 06, 02));
