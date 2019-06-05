@@ -1,11 +1,8 @@
 function soundOfAnimal(animal) {
-  let sound;
-  sound = this.sound;
+  let sound = animal.sound;
 
   if (animal === undefined) {
     return null;
-  } else if (animal !== undefined) {
-    return sound;
   }
 }
 
@@ -34,11 +31,13 @@ function countAge(year, month, day) {
   let diff = now - birthday;
   let age = diff / (1000*60*60*24*365.25);
   
-  if (now.getMonth() == birthday.getMonth() && now.getDate() == birthday.getDate()) {    
-    return Math.round(age);
+  if (age >= 18) { 
+    console.log('Вы совершеннолетний');
   } else {
-    return Math.floor(age);
+    console.log('Вам нет 18');
   }  
+  
+  return Math.floor(age);
 }
 
 console.log(countAge(1992, 06, 02));
