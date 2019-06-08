@@ -1,31 +1,20 @@
 "use strict";
 
 function calcForHypothec(interestRate, sumOfFirstPayment, sumOfCredit, period) {
+  for (let key in arguments) {
+    if (isNaN(parseInt(arguments[key]))) {
+      console.log(`Параметр: ${key}, содержит неправильное значение: ${arguments[key]}`);
+    }  
+  }
+  
   let returnPaymentToBank = sumOfCredit - sumOfFirstPayment;
   let partOfRate = interestRate / 100 / 12;
   let date = new Date().getMonth() + 1;
   period = period - date;
   let monthPayment = returnPaymentToBank * (partOfRate + partOfRate / (((1 + partOfRate) ** period) - 1));
   let totalSum = monthPayment * period;
-  
-  /*for (let i = 0; i <= arguments.length; i++) {
-    if (typeof arguments[i] == 'string') {
-      console.log(`Параметр: ${arguments[i]}, содержит неправильное значение: ${typeof arguments[i]}`);
-    }
-  }*/
-
-  for (let prop in arguments) {
-    if (typeof arguments[prop] == 'string') {
-      arguments[prop] = +arguments[prop];
-      console.log(`Параметр: ${prop}, содержит неправильное значение: ${arguments[prop]}`);
-    }  
-  }
 
   if (isNaN(totalSum)) return false;
-   
-  /*console.log(returnPaymentToBank);
-  console.log(monthPayment);
-  console.log(totalSum);*/
 
   return totalSum.toFixed(2);
 }
