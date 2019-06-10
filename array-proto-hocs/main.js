@@ -8,12 +8,12 @@ const memorize = (fn, limit) => {
     obj.args = Array.from(arguments);
     
     function same(res) {
-      return res.args.toString() === obj.args.toString();
+      return compareArrays(res.args, obj.args);
     }
 
     const findSame = results.find(same);
 
-    if (findSame !== undefined && compareArrays(obj.args, findSame.args) === true) {
+    if (findSame) {
       console.log(`Нашел совпадение: ${findSame.args}`);
       console.log(`Результат берётся из памяти: ${findSame.result}`);
 
