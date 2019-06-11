@@ -18,7 +18,8 @@ const memorize = (fn, limit) => {
       console.log(`Результат берётся из памяти: ${findSame.result}`);
 
       return findSame.result;
-    } else {
+    } //else {
+      
       console.log(`Совпадений не найдено`);
 
       obj.result = fn(arguments);
@@ -27,7 +28,7 @@ const memorize = (fn, limit) => {
       if (results.length > limit) results.shift();
 
       return obj.result;
-    }
+    //}
   }
 }
 
